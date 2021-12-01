@@ -12,7 +12,23 @@
 		67E9C95E2757A9D2000F7243 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67E9C95D2757A9D2000F7243 /* Assets.xcassets */; };
 		67E9C9612757A9D2000F7243 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67E9C95F2757A9D2000F7243 /* LaunchScreen.storyboard */; };
 		67E9C9742757B029000F7243 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E9C9732757B029000F7243 /* Configurations.swift */; };
+		67E9C99B2757D41A000F7243 /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E9C99A2757D41A000F7243 /* RxSwift.xcframework */; };
+		67E9C99C2757D41A000F7243 /* RxSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 67E9C99A2757D41A000F7243 /* RxSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		67E9C99D2757D41A000F7243 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				67E9C99C2757D41A000F7243 /* RxSwift.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		67E9C9512757A9D0000F7243 /* ModuloTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuloTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +42,7 @@
 		67E9C9712757AFFB000F7243 /* Stage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Stage.xcconfig; sourceTree = "<group>"; };
 		67E9C9722757B004000F7243 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		67E9C9732757B029000F7243 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
+		67E9C99A2757D41A000F7243 /* RxSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxSwift.xcframework; path = Carthage/Build/RxSwift.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67E9C99B2757D41A000F7243 /* RxSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +62,7 @@
 			children = (
 				67E9C9532757A9D0000F7243 /* ModuloTech */,
 				67E9C9522757A9D0000F7243 /* Products */,
+				67E9C9992757D41A000F7243 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +147,14 @@
 			path = Environments;
 			sourceTree = "<group>";
 		};
+		67E9C9992757D41A000F7243 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67E9C99A2757D41A000F7243 /* RxSwift.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +165,7 @@
 				67E9C94D2757A9D0000F7243 /* Sources */,
 				67E9C94E2757A9D0000F7243 /* Frameworks */,
 				67E9C94F2757A9D0000F7243 /* Resources */,
+				67E9C99D2757D41A000F7243 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
