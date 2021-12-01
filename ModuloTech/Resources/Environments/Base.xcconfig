@@ -1,0 +1,13 @@
+//
+//  Config.xcconfig
+//  ModuloTech
+//
+//  Created by Mohamed Amine HAJ MOHAMED on 01/12/2021.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+MT_APP_NAME = ModuloTech
+MT_APP_VERSION = 1.0
+MT_BUILD_VERSION = 1

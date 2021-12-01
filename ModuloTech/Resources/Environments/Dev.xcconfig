@@ -1,0 +1,18 @@
+//
+//  Config2.xcconfig
+//  ModuloTech
+//
+//  Created by Mohamed Amine HAJ MOHAMED on 01/12/2021.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Base.xcconfig"
+
+MT_APP_NAME = $(inherited) - DEV
+
+MT_APP_BUNDLE_IDENTIFIER = com.amine.mt.dev
+MT_APP_ICON = AppIconDev
+
+MT_BASE_API_URL = http:\/\/storage42.com/modulotest
