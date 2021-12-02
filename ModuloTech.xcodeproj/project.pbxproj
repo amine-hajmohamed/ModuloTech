@@ -10,6 +10,10 @@
 		674BB52B2758BED800A548D9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB52A2758BED800A548D9 /* AppError.swift */; };
 		674BB5332758CA4E00A548D9 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5322758CA4E00A548D9 /* HTTPClientTests.swift */; };
 		674BB5352758F74400A548D9 /* EmptyDataStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 674BB5342758F74400A548D9 /* EmptyDataStub.json */; };
+		674BB5372758F9CC00A548D9 /* DataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5362758F9CC00A548D9 /* DataUseCase.swift */; };
+		674BB5392758FB1B00A548D9 /* MemoryCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5382758FB1B00A548D9 /* MemoryCacheProvider.swift */; };
+		674BB53B2758FBF200A548D9 /* DeviceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB53A2758FBF200A548D9 /* DeviceUseCase.swift */; };
+		674BB53E2759003A00A548D9 /* MemoryCacheProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB53D2759003A00A548D9 /* MemoryCacheProviderImpl.swift */; };
 		67DB92332757D962006EDCD9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92322757D962006EDCD9 /* Device.swift */; };
 		67DB92352757D980006EDCD9 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92342757D980006EDCD9 /* Light.swift */; };
 		67DB92372757D994006EDCD9 /* RollerShutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92362757D994006EDCD9 /* RollerShutter.swift */; };
@@ -62,6 +66,10 @@
 		674BB52A2758BED800A548D9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		674BB5322758CA4E00A548D9 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
 		674BB5342758F74400A548D9 /* EmptyDataStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyDataStub.json; sourceTree = "<group>"; };
+		674BB5362758F9CC00A548D9 /* DataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUseCase.swift; sourceTree = "<group>"; };
+		674BB5382758FB1B00A548D9 /* MemoryCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheProvider.swift; sourceTree = "<group>"; };
+		674BB53A2758FBF200A548D9 /* DeviceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUseCase.swift; sourceTree = "<group>"; };
+		674BB53D2759003A00A548D9 /* MemoryCacheProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheProviderImpl.swift; sourceTree = "<group>"; };
 		67DB92322757D962006EDCD9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		67DB92342757D980006EDCD9 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		67DB92362757D994006EDCD9 /* RollerShutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutter.swift; sourceTree = "<group>"; };
@@ -141,6 +149,14 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
+		674BB53C2758FFE200A548D9 /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				674BB53D2759003A00A548D9 /* MemoryCacheProviderImpl.swift */,
+			);
+			path = Memory;
+			sourceTree = "<group>";
+		};
 		67DB922E2757D91E006EDCD9 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				67DB923C2757DA66006EDCD9 /* DataApiProvider.swift */,
+				674BB5382758FB1B00A548D9 /* MemoryCacheProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -162,6 +179,8 @@
 		67DB92302757D939006EDCD9 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				674BB5362758F9CC00A548D9 /* DataUseCase.swift */,
+				674BB53A2758FBF200A548D9 /* DeviceUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -189,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				67DB92412757DC17006EDCD9 /* Network */,
+				674BB53C2758FFE200A548D9 /* Memory */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -485,10 +505,14 @@
 				674BB52B2758BED800A548D9 /* AppError.swift in Sources */,
 				67DB924D27581CEC006EDCD9 /* DeviceDTOMapper.swift in Sources */,
 				67E9C9572757A9D0000F7243 /* SceneDelegate.swift in Sources */,
+				674BB5372758F9CC00A548D9 /* DataUseCase.swift in Sources */,
 				67DB924827581414006EDCD9 /* DeviceDTO.swift in Sources */,
 				67DB92462757DCD2006EDCD9 /* HTTPClient.swift in Sources */,
+				674BB5392758FB1B00A548D9 /* MemoryCacheProvider.swift in Sources */,
 				67E9C9742757B029000F7243 /* Configurations.swift in Sources */,
+				674BB53E2759003A00A548D9 /* MemoryCacheProviderImpl.swift in Sources */,
 				67DB923D2757DA66006EDCD9 /* DataApiProvider.swift in Sources */,
+				674BB53B2758FBF200A548D9 /* DeviceUseCase.swift in Sources */,
 				67DB92332757D962006EDCD9 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
