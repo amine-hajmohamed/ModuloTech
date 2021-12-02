@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  ModuloTech
+
+  Created by Mohamed Amine HAJ MOHAMED on 02/12/2021.
+  
+*/
+
+"DevicesListViewController.Title" = "My devices";

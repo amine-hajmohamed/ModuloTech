@@ -21,5 +21,5 @@ class DeviceUseCase {
     
     // MARK: - UseCases
     
-    lazy var devices: Observable<[Device]> = memoryCacheProvider.devices.asObserver()
+    lazy var devicesObservable: Observable<[Device]> = memoryCacheProvider.devices.asObserver()
 }
