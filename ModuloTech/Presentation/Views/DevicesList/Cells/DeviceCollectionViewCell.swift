@@ -102,8 +102,6 @@ private extension DeviceCollectionViewCell {
         setupMainView()
     }
     
-    // MARK: - Setup views
-    
     func setupImageViewDeviceIcon() {
         imageViewDeviceIcon = UIImageView()
         imageViewDeviceIcon.translatesAutoresizingMaskIntoConstraints = false
