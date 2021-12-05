@@ -27,6 +27,7 @@
 		674BB5622759228C00A548D9 /* DeviceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5612759228C00A548D9 /* DeviceCollectionViewCell.swift */; };
 		674BB5642759252600A548D9 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5632759252600A548D9 /* UICollectionView+Extensions.swift */; };
 		674BB56D275A6D5F00A548D9 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB56C275A6D5F00A548D9 /* SliderView.swift */; };
+		674BB571275CEFA200A548D9 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB570275CEFA200A548D9 /* Float+Extension.swift */; };
 		67DB92332757D962006EDCD9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92322757D962006EDCD9 /* Device.swift */; };
 		67DB92352757D980006EDCD9 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92342757D980006EDCD9 /* Light.swift */; };
 		67DB92372757D994006EDCD9 /* RollerShutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92362757D994006EDCD9 /* RollerShutter.swift */; };
@@ -97,6 +98,7 @@
 		674BB5612759228C00A548D9 /* DeviceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCollectionViewCell.swift; sourceTree = "<group>"; };
 		674BB5632759252600A548D9 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		674BB56C275A6D5F00A548D9 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		674BB570275CEFA200A548D9 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		67DB92322757D962006EDCD9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		67DB92342757D980006EDCD9 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		67DB92362757D994006EDCD9 /* RollerShutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutter.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				674BB55C2759131300A548D9 /* String+Extension.swift */,
+				674BB570275CEFA200A548D9 /* Float+Extension.swift */,
 				674BB5632759252600A548D9 /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
@@ -618,6 +621,7 @@
 				67DB924A2758152F006EDCD9 /* DataDTO.swift in Sources */,
 				674BB545275903F500A548D9 /* Coordinator.swift in Sources */,
 				674BB52B2758BED800A548D9 /* AppError.swift in Sources */,
+				674BB571275CEFA200A548D9 /* Float+Extension.swift in Sources */,
 				67DB924D27581CEC006EDCD9 /* DeviceDTOMapper.swift in Sources */,
 				674BB54B2759042800A548D9 /* Presentable.swift in Sources */,
 				67E9C9572757A9D0000F7243 /* SceneDelegate.swift in Sources */,

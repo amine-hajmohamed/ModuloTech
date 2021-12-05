@@ -32,7 +32,7 @@ class DevicesListViewController: UIViewController {
         
         title = "DevicesListViewController.Title".localized
         
-        observeViewData()
+        observe()
         viewModel?.onViewDidLoad()
     }
     
@@ -43,22 +43,23 @@ class DevicesListViewController: UIViewController {
         collectionViewDevicesListLayout?.itemSize = calculateCellSize()
     }
     
-    // MARK: - Observe view data
+    // MARK: - Observe
     
-    private func observeViewData() {
+    private func observe() {
         viewModel?.devicesObservable
-            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] devices in
-                self?.configure(with: devices)
+                self?.update(with: devices)
             })
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Configure
+    // MARK: - Update
     
-    private func configure(with devices: [Device]) {
+    private func update(with devices: [Device]) {
         self.devices = devices
-        collectionViewDevicesList.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionViewDevicesList.reloadData()
+        }
     }
 }
 
@@ -96,6 +97,7 @@ extension DevicesListViewController {
         
         collectionViewDevicesList = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionViewDevicesList.translatesAutoresizingMaskIntoConstraints = false
+        collectionViewDevicesList.backgroundColor = UIColor.clear
         collectionViewDevicesList.register(with: DeviceCollectionViewCell.self)
         collectionViewDevicesList.dataSource = self
     }

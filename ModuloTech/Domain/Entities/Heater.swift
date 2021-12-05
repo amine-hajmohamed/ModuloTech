@@ -13,6 +13,6 @@ class Heater: Device {
     init(id: Int, deviceName: String, mode: Bool, temperature: Float) {
         self.mode = mode
         self.temperature = temperature
-        super.init(id: id, deviceName: deviceName)
+        super.init(id: id, name: deviceName)
     }
 }

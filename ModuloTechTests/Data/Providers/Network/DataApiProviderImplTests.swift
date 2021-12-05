@@ -46,18 +46,18 @@ class DataApiProviderImplTests: XCTestCase {
                 
                 let light = devices[0] as? Light
                 XCTAssertEqual(light?.id, 1)
-                XCTAssertEqual(light?.deviceName, "Lampe - Cuisine")
+                XCTAssertEqual(light?.name, "Lampe - Cuisine")
                 XCTAssertEqual(light?.intensity, 50)
                 XCTAssertEqual(light?.mode, true)
                 
                 let rollerShutter = devices[1] as? RollerShutter
                 XCTAssertEqual(rollerShutter?.id, 2)
-                XCTAssertEqual(rollerShutter?.deviceName, "Volet roulant - Salon")
+                XCTAssertEqual(rollerShutter?.name, "Volet roulant - Salon")
                 XCTAssertEqual(rollerShutter?.position, 70)
                 
                 let heater = devices[2] as? Heater
                 XCTAssertEqual(heater?.id, 3)
-                XCTAssertEqual(heater?.deviceName, "Radiateur - Chambre")
+                XCTAssertEqual(heater?.name, "Radiateur - Chambre")
                 XCTAssertEqual(heater?.mode, false)
                 XCTAssertEqual(heater?.temperature, 20)
                 
