@@ -8,10 +8,10 @@
 class Device {
     
     let id: Int
-    var deviceName: String
+    var name: String
     
-    init(id: Int, deviceName: String) {
+    init(id: Int, name: String) {
         self.id = id
-        self.deviceName = deviceName
+        self.name = name
     }
 }

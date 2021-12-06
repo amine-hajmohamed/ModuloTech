@@ -13,6 +13,6 @@ class Light: Device {
     init(id: Int, deviceName: String, mode: Bool, intensity: Int) {
         self.mode = mode
         self.intensity = intensity
-        super.init(id: id, deviceName: deviceName)
+        super.init(id: id, name: deviceName)
     }
 }

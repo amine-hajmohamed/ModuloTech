@@ -11,6 +11,6 @@ class RollerShutter: Device {
     
     init(id: Int, deviceName: String, position: Int) {
         self.position = position
-        super.init(id: id, deviceName: deviceName)
+        super.init(id: id, name: deviceName)
     }
 }

@@ -11,12 +11,12 @@ class DeviceCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View
     
-    private var stackViewDeviceIconAndName: UIStackView!
-    private var imageViewDeviceIcon: UIImageView!
-    private var labelDeviceName: UILabel!
+    private var stackViewIconAndName: UIStackView!
+    private var imageViewIcon: UIImageView!
+    private var labelName: UILabel!
     
-    private var viewDeviceValue: UIView!
-    private var labelDeviceValue: UILabel!
+    private var viewValue: UIView!
+    private var labelValue: UILabel!
     
     // MARK: - Initializer
     
@@ -33,7 +33,7 @@ class DeviceCollectionViewCell: UICollectionViewCell {
     // MARK: - Configure
     
     func configure(with device: Device) {
-        labelDeviceName.text = device.deviceName
+        labelName.text = device.name
         
         switch device {
         case let light as Light:
@@ -46,44 +46,39 @@ class DeviceCollectionViewCell: UICollectionViewCell {
             configure(withHeater: heater)
             
         default:
-            imageViewDeviceIcon.image = nil
-            labelDeviceValue.text = nil
+            imageViewIcon.image = nil
+            labelValue.text = nil
         }
         
-        if let text = labelDeviceValue.text, !text.isEmpty {
-            viewDeviceValue.isHidden = false
+        if let text = labelValue.text, !text.isEmpty {
+            viewValue.isHidden = false
         } else {
-            viewDeviceValue.isHidden = true
+            viewValue.isHidden = true
         }
     }
     
     private func configure(withLight light: Light) {
         if light.mode {
-            imageViewDeviceIcon.image = UIImage(named: "DeviceLightOnIcon")
-            labelDeviceValue.text = "\(light.intensity)"
+            imageViewIcon.image = UIImage(named: "DeviceLightOnIcon")
+            labelValue.text = "\(light.intensity)"
         } else {
-            imageViewDeviceIcon.image = UIImage(named: "DeviceLightOffIcon")
-            labelDeviceValue.text = nil
+            imageViewIcon.image = UIImage(named: "DeviceLightOffIcon")
+            labelValue.text = nil
         }
     }
     
     private func configure(withRollerShutter rollerShutter: RollerShutter) {
-        imageViewDeviceIcon.image = UIImage(named: "DeviceRollerShutterIcon")
-        labelDeviceValue.text = "\(rollerShutter.position)"
+        imageViewIcon.image = UIImage(named: "DeviceRollerShutterIcon")
+        labelValue.text = "\(rollerShutter.position)"
     }
     
     private func configure(withHeater heater: Heater) {
         if heater.mode {
-            imageViewDeviceIcon.image = UIImage(named: "DeviceHeaterOnIcon")
-            
-            var stringFormat = "%.1f°"
-            if heater.temperature.truncatingRemainder(dividingBy: 1) == 0 {
-                stringFormat = "%.0f°"
-            }
-            labelDeviceValue.text = String(format: stringFormat, heater.temperature)
+            imageViewIcon.image = UIImage(named: "DeviceHeaterOnIcon")
+            labelValue.text = heater.temperature.toString() + "°"
         } else {
-            imageViewDeviceIcon.image = UIImage(named: "DeviceHeaterOffIcon")
-            labelDeviceValue.text = nil
+            imageViewIcon.image = UIImage(named: "DeviceHeaterOffIcon")
+            labelValue.text = nil
         }
     }
 }
@@ -92,68 +87,68 @@ class DeviceCollectionViewCell: UICollectionViewCell {
 private extension DeviceCollectionViewCell {
     
     func loadView() {
-        setupImageViewDeviceIcon()
-        setupLabelDeviceName()
-        setupStackViewDeviceIconAndName()
+        setupImageViewIcon()
+        setupLabelName()
+        setupStackViewIconAndName()
         
-        setupLabelDeviceValue()
-        setupViewDeviceValue()
+        setupLabelValue()
+        setupViewValue()
         
         setupMainView()
     }
     
-    // MARK: - Setup views
-    
-    func setupImageViewDeviceIcon() {
-        imageViewDeviceIcon = UIImageView()
-        imageViewDeviceIcon.translatesAutoresizingMaskIntoConstraints = false
-        imageViewDeviceIcon.contentMode = .scaleAspectFit
+    func setupImageViewIcon() {
+        imageViewIcon = UIImageView()
+        imageViewIcon.translatesAutoresizingMaskIntoConstraints = false
+        imageViewIcon.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
-            imageViewDeviceIcon.widthAnchor.constraint(equalToConstant: 60),
-            imageViewDeviceIcon.heightAnchor.constraint(equalToConstant: 60),
+            imageViewIcon.widthAnchor.constraint(equalToConstant: 60),
+            imageViewIcon.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
     
-    func setupLabelDeviceName() {
-        labelDeviceName = UILabel()
-        labelDeviceName.translatesAutoresizingMaskIntoConstraints = false
-        labelDeviceName.textAlignment = .center
-        labelDeviceName.font = UIFont.systemFont(ofSize: 15)
-        labelDeviceName.numberOfLines = 2
+    func setupLabelName() {
+        labelName = UILabel()
+        labelName.translatesAutoresizingMaskIntoConstraints = false
+        labelName.textColor = UIColor(named: "Black")
+        labelName.textAlignment = .center
+        labelName.font = UIFont.systemFont(ofSize: 15)
+        labelName.numberOfLines = 2
     }
     
-    func setupStackViewDeviceIconAndName() {
-        stackViewDeviceIconAndName = UIStackView()
-        stackViewDeviceIconAndName.translatesAutoresizingMaskIntoConstraints = false
-        stackViewDeviceIconAndName.axis = .vertical
-        stackViewDeviceIconAndName.alignment = .center
-        stackViewDeviceIconAndName.distribution = .equalSpacing
-        stackViewDeviceIconAndName.spacing = 20
+    func setupStackViewIconAndName() {
+        stackViewIconAndName = UIStackView()
+        stackViewIconAndName.translatesAutoresizingMaskIntoConstraints = false
+        stackViewIconAndName.axis = .vertical
+        stackViewIconAndName.alignment = .center
+        stackViewIconAndName.distribution = .equalSpacing
+        stackViewIconAndName.spacing = 20
         
-        stackViewDeviceIconAndName.addArrangedSubview(imageViewDeviceIcon)
-        stackViewDeviceIconAndName.addArrangedSubview(labelDeviceName)
+        stackViewIconAndName.addArrangedSubview(imageViewIcon)
+        stackViewIconAndName.addArrangedSubview(labelName)
     }
     
-    func setupLabelDeviceValue() {
-        labelDeviceValue = UILabel()
-        labelDeviceValue.translatesAutoresizingMaskIntoConstraints = false
-        labelDeviceValue.font = UIFont.systemFont(ofSize: 10)
+    func setupLabelValue() {
+        labelValue = UILabel()
+        labelValue.translatesAutoresizingMaskIntoConstraints = false
+        labelValue.textColor = UIColor(named: "Black")
+        labelValue.font = UIFont.systemFont(ofSize: 10)
     }
     
-    func setupViewDeviceValue() {
-        viewDeviceValue = UIView()
-        viewDeviceValue.translatesAutoresizingMaskIntoConstraints = false
-        viewDeviceValue.backgroundColor = UIColor(named: "Gray")
-        viewDeviceValue.layer.cornerRadius = 10
+    func setupViewValue() {
+        viewValue = UIView()
+        viewValue.translatesAutoresizingMaskIntoConstraints = false
+        viewValue.backgroundColor = UIColor(named: "Gray")
+        viewValue.layer.cornerRadius = 10
         
-        viewDeviceValue.addSubview(labelDeviceValue)
+        viewValue.addSubview(labelValue)
         
         NSLayoutConstraint.activate([
-            labelDeviceValue.topAnchor.constraint(equalTo: viewDeviceValue.topAnchor, constant: 5),
-            labelDeviceValue.bottomAnchor.constraint(equalTo: viewDeviceValue.bottomAnchor, constant: -5),
-            labelDeviceValue.leadingAnchor.constraint(equalTo: viewDeviceValue.leadingAnchor, constant: 10),
-            labelDeviceValue.trailingAnchor.constraint(equalTo: viewDeviceValue.trailingAnchor, constant: -10),
+            labelValue.topAnchor.constraint(equalTo: viewValue.topAnchor, constant: 5),
+            labelValue.bottomAnchor.constraint(equalTo: viewValue.bottomAnchor, constant: -5),
+            labelValue.leadingAnchor.constraint(equalTo: viewValue.leadingAnchor, constant: 10),
+            labelValue.trailingAnchor.constraint(equalTo: viewValue.trailingAnchor, constant: -10),
         ])
     }
     
@@ -167,15 +162,15 @@ private extension DeviceCollectionViewCell {
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 5
         
-        addSubview(stackViewDeviceIconAndName)
-        addSubview(viewDeviceValue)
+        addSubview(stackViewIconAndName)
+        addSubview(viewValue)
         
         NSLayoutConstraint.activate([
-            stackViewDeviceIconAndName.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackViewDeviceIconAndName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackViewDeviceIconAndName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            viewDeviceValue.bottomAnchor.constraint(equalTo: imageViewDeviceIcon.topAnchor, constant: 15),
-            viewDeviceValue.leadingAnchor.constraint(equalTo: imageViewDeviceIcon.trailingAnchor, constant: -15),
+            stackViewIconAndName.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackViewIconAndName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            stackViewIconAndName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            viewValue.bottomAnchor.constraint(equalTo: imageViewIcon.topAnchor, constant: 15),
+            viewValue.leadingAnchor.constraint(equalTo: imageViewIcon.trailingAnchor, constant: -15),
         ])
     }
 }

@@ -37,10 +37,11 @@ class AppCoordinator: BaseCoordinator {
     }
     
     private func goToDevicesList() {
-        let devicesListViewModel = DevicesListViewModel(dataUseCase: appModule.dataUseCase,
-                                                        deviceUseCase: appModule.deviceUseCase)
-        let devicesListViewController = DevicesListViewController()
-        devicesListViewController.viewModel = devicesListViewModel
-        router.setRootModule(devicesListViewController, hideBar: false)
+        let devicesListCoordinator = DevicesListCoordinator(appModule: appModule, router: router)
+        addChildCoordinator(devicesListCoordinator)
+        devicesListCoordinator.onCompletion = { [weak self] in
+            self?.removeChildCoordinator(devicesListCoordinator)
+        }
+        devicesListCoordinator.start()
     }
 }
