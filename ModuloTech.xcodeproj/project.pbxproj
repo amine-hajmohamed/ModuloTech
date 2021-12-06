@@ -31,6 +31,8 @@
 		674BB56F275CE97300A548D9 /* DeviceControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB56E275CE97300A548D9 /* DeviceControlViewModel.swift */; };
 		674BB571275CEFA200A548D9 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB570275CEFA200A548D9 /* Float+Extension.swift */; };
 		674BB573275D1FE000A548D9 /* DevicesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB572275D1FE000A548D9 /* DevicesListCoordinator.swift */; };
+		674BB575275E02C900A548D9 /* DevicesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB574275E02C900A548D9 /* DevicesFilter.swift */; };
+		674BB578275E056400A548D9 /* DevicesFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB577275E056400A548D9 /* DevicesFilterView.swift */; };
 		67DB92332757D962006EDCD9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92322757D962006EDCD9 /* Device.swift */; };
 		67DB92352757D980006EDCD9 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92342757D980006EDCD9 /* Light.swift */; };
 		67DB92372757D994006EDCD9 /* RollerShutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92362757D994006EDCD9 /* RollerShutter.swift */; };
@@ -105,6 +107,8 @@
 		674BB56E275CE97300A548D9 /* DeviceControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControlViewModel.swift; sourceTree = "<group>"; };
 		674BB570275CEFA200A548D9 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		674BB572275D1FE000A548D9 /* DevicesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListCoordinator.swift; sourceTree = "<group>"; };
+		674BB574275E02C900A548D9 /* DevicesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesFilter.swift; sourceTree = "<group>"; };
+		674BB577275E056400A548D9 /* DevicesFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesFilterView.swift; sourceTree = "<group>"; };
 		67DB92322757D962006EDCD9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		67DB92342757D980006EDCD9 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		67DB92362757D994006EDCD9 /* RollerShutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutter.swift; sourceTree = "<group>"; };
@@ -243,37 +247,39 @@
 		674BB5502759081A00A548D9 /* DevicesList */ = {
 			isa = PBXGroup;
 			children = (
-				674BB55E27591BFC00A548D9 /* Cells */,
+				674BB576275E053100A548D9 /* Views */,
 				674BB5512759082900A548D9 /* DevicesListViewController.swift */,
 				674BB5532759084500A548D9 /* DevicesListViewModel.swift */,
+				674BB574275E02C900A548D9 /* DevicesFilter.swift */,
 			);
 			path = DevicesList;
-			sourceTree = "<group>";
-		};
-		674BB55E27591BFC00A548D9 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				674BB5612759228C00A548D9 /* DeviceCollectionViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		674BB568275A690A00A548D9 /* DeviceControl */ = {
 			isa = PBXGroup;
 			children = (
-				674BB56B275A6CE400A548D9 /* View */,
+				674BB56B275A6CE400A548D9 /* Views */,
 				674BB569275A694600A548D9 /* DeviceControlViewController.swift */,
 				674BB56E275CE97300A548D9 /* DeviceControlViewModel.swift */,
 			);
 			path = DeviceControl;
 			sourceTree = "<group>";
 		};
-		674BB56B275A6CE400A548D9 /* View */ = {
+		674BB56B275A6CE400A548D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				674BB56C275A6D5F00A548D9 /* SliderView.swift */,
 			);
-			path = View;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		674BB576275E053100A548D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				674BB5612759228C00A548D9 /* DeviceCollectionViewCell.swift */,
+				674BB577275E056400A548D9 /* DevicesFilterView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		67DB922E2757D91E006EDCD9 /* Domain */ = {
@@ -624,6 +630,7 @@
 			files = (
 				67E9C9552757A9D0000F7243 /* AppDelegate.swift in Sources */,
 				67DB92392757D9A5006EDCD9 /* Heater.swift in Sources */,
+				674BB575275E02C900A548D9 /* DevicesFilter.swift in Sources */,
 				67DB92372757D994006EDCD9 /* RollerShutter.swift in Sources */,
 				67DB92352757D980006EDCD9 /* Light.swift in Sources */,
 				674BB56A275A694600A548D9 /* DeviceControlViewController.swift in Sources */,
@@ -643,6 +650,7 @@
 				674BB5492759041E00A548D9 /* Router.swift in Sources */,
 				674BB5542759084500A548D9 /* DevicesListViewModel.swift in Sources */,
 				674BB5372758F9CC00A548D9 /* DataUseCase.swift in Sources */,
+				674BB578275E056400A548D9 /* DevicesFilterView.swift in Sources */,
 				674BB56F275CE97300A548D9 /* DeviceControlViewModel.swift in Sources */,
 				67DB924827581414006EDCD9 /* DeviceDTO.swift in Sources */,
 				67DB92462757DCD2006EDCD9 /* HTTPClient.swift in Sources */,

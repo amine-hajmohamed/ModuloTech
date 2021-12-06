@@ -16,6 +16,7 @@ class DevicesListViewController: UIViewController {
     
     // MARK: - View
     
+    private var devicesFilterView: DevicesFilterView!
     private var collectionViewDevicesList: UICollectionView!
     
     // MARK: - Properties
@@ -49,6 +50,12 @@ class DevicesListViewController: UIViewController {
         viewModel?.devicesObservable
             .subscribe(onNext: { [weak self] devices in
                 self?.update(with: devices)
+            })
+            .disposed(by: disposeBag)
+        
+        devicesFilterView.selectedDeviceTypesObservable
+            .subscribe(onNext: { [weak self] selectedDeviceTypes in
+                self?.viewModel?.onFilterDeviceTypeChanged(selectedDeviceTypes)
             })
             .disposed(by: disposeBag)
     }
@@ -93,8 +100,19 @@ extension DevicesListViewController {
     override func loadView() {
         super.loadView()
         
+        setupDevicesFilterView()
         setupCollectionViewDevicesList()
         setupMainView()
+    }
+    
+    private func setupDevicesFilterView() {
+        devicesFilterView = DevicesFilterView()
+        devicesFilterView.translatesAutoresizingMaskIntoConstraints = false
+        
+        devicesFilterView.layer.shadowColor = UIColor(named: "Black")?.cgColor
+        devicesFilterView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        devicesFilterView.layer.shadowOpacity = 0.25
+        devicesFilterView.layer.shadowRadius = 3
     }
     
     private func setupCollectionViewDevicesList() {
@@ -116,9 +134,13 @@ extension DevicesListViewController {
         view.backgroundColor = UIColor(named: "White")
         
         view.addSubview(collectionViewDevicesList)
+        view.addSubview(devicesFilterView)
         
         NSLayoutConstraint.activate([
-            collectionViewDevicesList.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            devicesFilterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            devicesFilterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            devicesFilterView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            collectionViewDevicesList.topAnchor.constraint(equalTo: devicesFilterView.bottomAnchor),
             collectionViewDevicesList.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
             collectionViewDevicesList.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionViewDevicesList.trailingAnchor.constraint(equalTo: view.trailingAnchor),

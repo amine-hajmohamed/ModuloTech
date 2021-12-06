@@ -11,10 +11,17 @@ class DevicesListViewModel {
     
     // MARK: - Properties
     
-    let devicesObservable: Observable<[Device]>
+    private let devicesSubject = BehaviorSubject<[Device]>(value: [])
+    var devicesObservable: Observable<[Device]> { devicesSubject.asObserver() }
     
     private let selectedDeviceSubject = PublishSubject<Device>()
     var selectedDeviceObservable: Observable<Device> { selectedDeviceSubject.asObserver() }
+    
+    private var devicesListNotFiltred: [Device] = []
+    
+    private let devicesFilter = DevicesFilter()
+    
+    private let disposeBag = DisposeBag()
     
     // MARK: - UseCases
     
@@ -27,7 +34,24 @@ class DevicesListViewModel {
         self.dataUseCase = dataUseCase
         self.deviceUseCase = deviceUseCase
         
-        devicesObservable = deviceUseCase.devicesObservable
+        observe()
+    }
+    
+    // MARK: - Observe
+    
+    private func observe() {
+        deviceUseCase.devicesObservable
+            .subscribe(onNext: { [weak self] devices in
+                self?.devicesListNotFiltred = devices
+                self?.updateDevices()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Update
+    
+    private func updateDevices() {
+        devicesSubject.onNext(devicesFilter.filter(devices: devicesListNotFiltred))
     }
     
     // MARK: - Events
@@ -38,5 +62,10 @@ class DevicesListViewModel {
     
     func onDeviceTapped(_ device: Device) {
         selectedDeviceSubject.onNext(device)
+    }
+    
+    func onFilterDeviceTypeChanged(_ deviceTypes: Set<DeviceType>) {
+        devicesFilter.filterDeviceTypes = deviceTypes
+        updateDevices()
     }
 }
