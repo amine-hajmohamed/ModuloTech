@@ -6,4 +6,11 @@
   
 */
 
+"turn_on" = "Allumer";
+"turn_off" = "Éteindre";
+
+"Light" = "Lampe";
+"RollerShutter" = "Volet roulant";
+"Heater" = "Radiateur";
+
 "DevicesListViewController.Title" = "Mes appareils";

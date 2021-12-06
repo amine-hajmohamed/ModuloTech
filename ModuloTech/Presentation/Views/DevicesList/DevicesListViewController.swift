@@ -78,6 +78,15 @@ extension DevicesListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+extension DevicesListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let device = devices[indexPath.row]
+        viewModel?.onDeviceTapped(device)
+    }
+}
+
 // MARK: - View
 extension DevicesListViewController {
     
@@ -100,6 +109,7 @@ extension DevicesListViewController {
         collectionViewDevicesList.backgroundColor = UIColor.clear
         collectionViewDevicesList.register(with: DeviceCollectionViewCell.self)
         collectionViewDevicesList.dataSource = self
+        collectionViewDevicesList.delegate = self
     }
     
     private func setupMainView() {

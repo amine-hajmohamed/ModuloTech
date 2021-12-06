@@ -13,6 +13,9 @@ class DevicesListViewModel {
     
     let devicesObservable: Observable<[Device]>
     
+    private let selectedDeviceSubject = PublishSubject<Device>()
+    var selectedDeviceObservable: Observable<Device> { selectedDeviceSubject.asObserver() }
+    
     // MARK: - UseCases
     
     private let dataUseCase: DataUseCase
@@ -31,5 +34,9 @@ class DevicesListViewModel {
     
     func onViewDidLoad() {
         dataUseCase.refreshData()
+    }
+    
+    func onDeviceTapped(_ device: Device) {
+        selectedDeviceSubject.onNext(device)
     }
 }

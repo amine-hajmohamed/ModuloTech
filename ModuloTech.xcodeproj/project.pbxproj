@@ -26,8 +26,11 @@
 		674BB55D2759131300A548D9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB55C2759131300A548D9 /* String+Extension.swift */; };
 		674BB5622759228C00A548D9 /* DeviceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5612759228C00A548D9 /* DeviceCollectionViewCell.swift */; };
 		674BB5642759252600A548D9 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB5632759252600A548D9 /* UICollectionView+Extensions.swift */; };
+		674BB56A275A694600A548D9 /* DeviceControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB569275A694600A548D9 /* DeviceControlViewController.swift */; };
 		674BB56D275A6D5F00A548D9 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB56C275A6D5F00A548D9 /* SliderView.swift */; };
+		674BB56F275CE97300A548D9 /* DeviceControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB56E275CE97300A548D9 /* DeviceControlViewModel.swift */; };
 		674BB571275CEFA200A548D9 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB570275CEFA200A548D9 /* Float+Extension.swift */; };
+		674BB573275D1FE000A548D9 /* DevicesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BB572275D1FE000A548D9 /* DevicesListCoordinator.swift */; };
 		67DB92332757D962006EDCD9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92322757D962006EDCD9 /* Device.swift */; };
 		67DB92352757D980006EDCD9 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92342757D980006EDCD9 /* Light.swift */; };
 		67DB92372757D994006EDCD9 /* RollerShutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB92362757D994006EDCD9 /* RollerShutter.swift */; };
@@ -97,8 +100,11 @@
 		674BB55C2759131300A548D9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		674BB5612759228C00A548D9 /* DeviceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCollectionViewCell.swift; sourceTree = "<group>"; };
 		674BB5632759252600A548D9 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		674BB569275A694600A548D9 /* DeviceControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControlViewController.swift; sourceTree = "<group>"; };
 		674BB56C275A6D5F00A548D9 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		674BB56E275CE97300A548D9 /* DeviceControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControlViewModel.swift; sourceTree = "<group>"; };
 		674BB570275CEFA200A548D9 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		674BB572275D1FE000A548D9 /* DevicesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListCoordinator.swift; sourceTree = "<group>"; };
 		67DB92322757D962006EDCD9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		67DB92342757D980006EDCD9 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		67DB92362757D994006EDCD9 /* RollerShutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutter.swift; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 				674BB542275903DB00A548D9 /* Router */,
 				674BB543275903E100A548D9 /* BaseCoordinator */,
 				674BB54E2759071D00A548D9 /* AppCoordinator.swift */,
+				674BB572275D1FE000A548D9 /* DevicesListCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				674BB5502759081A00A548D9 /* DevicesList */,
+				674BB568275A690A00A548D9 /* DeviceControl */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				674BB56B275A6CE400A548D9 /* View */,
+				674BB569275A694600A548D9 /* DeviceControlViewController.swift */,
+				674BB56E275CE97300A548D9 /* DeviceControlViewModel.swift */,
 			);
 			path = DeviceControl;
 			sourceTree = "<group>";
@@ -616,6 +626,7 @@
 				67DB92392757D9A5006EDCD9 /* Heater.swift in Sources */,
 				67DB92372757D994006EDCD9 /* RollerShutter.swift in Sources */,
 				67DB92352757D980006EDCD9 /* Light.swift in Sources */,
+				674BB56A275A694600A548D9 /* DeviceControlViewController.swift in Sources */,
 				674BB5642759252600A548D9 /* UICollectionView+Extensions.swift in Sources */,
 				67DB92442757DC86006EDCD9 /* DataApiProviderImpl.swift in Sources */,
 				67DB924A2758152F006EDCD9 /* DataDTO.swift in Sources */,
@@ -632,6 +643,7 @@
 				674BB5492759041E00A548D9 /* Router.swift in Sources */,
 				674BB5542759084500A548D9 /* DevicesListViewModel.swift in Sources */,
 				674BB5372758F9CC00A548D9 /* DataUseCase.swift in Sources */,
+				674BB56F275CE97300A548D9 /* DeviceControlViewModel.swift in Sources */,
 				67DB924827581414006EDCD9 /* DeviceDTO.swift in Sources */,
 				67DB92462757DCD2006EDCD9 /* HTTPClient.swift in Sources */,
 				674BB5392758FB1B00A548D9 /* MemoryCacheProvider.swift in Sources */,
@@ -640,6 +652,7 @@
 				674BB5472759040000A548D9 /* BaseCoordinator.swift in Sources */,
 				674BB53E2759003A00A548D9 /* MemoryCacheProviderImpl.swift in Sources */,
 				67DB923D2757DA66006EDCD9 /* DataApiProvider.swift in Sources */,
+				674BB573275D1FE000A548D9 /* DevicesListCoordinator.swift in Sources */,
 				674BB5522759082900A548D9 /* DevicesListViewController.swift in Sources */,
 				674BB53B2758FBF200A548D9 /* DeviceUseCase.swift in Sources */,
 				67DB92332757D962006EDCD9 /* Device.swift in Sources */,
