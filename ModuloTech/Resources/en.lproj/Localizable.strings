@@ -14,5 +14,12 @@
 "Heater" = "Heater";
 
 "All" = "All";
+"Edit" = "Edit";
+"Done" = "Done";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
 
 "DevicesListViewController.Title" = "My devices";
+
+"Alert.DeleteDevice.Title" = "Attention";
+"Alert.DeleteDevice.Message" = "%@ will be delete !";

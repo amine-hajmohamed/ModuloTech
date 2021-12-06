@@ -16,6 +16,7 @@ class DevicesListViewController: UIViewController {
     
     // MARK: - View
     
+    private var barButtonEdit: UIBarButtonItem!
     private var devicesFilterView: DevicesFilterView!
     private var collectionViewDevicesList: UICollectionView!
     
@@ -24,6 +25,7 @@ class DevicesListViewController: UIViewController {
     var viewModel: DevicesListViewModel?
     
     private var devices: [Device] = []
+    private var editMode = false
     private let disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
@@ -53,6 +55,12 @@ class DevicesListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel?.editModeObservable
+            .subscribe(onNext: { [weak self] editMode in
+                self?.updateEditMode(editMode)
+            })
+            .disposed(by: disposeBag)
+        
         devicesFilterView.selectedDeviceTypesObservable
             .subscribe(onNext: { [weak self] selectedDeviceTypes in
                 self?.viewModel?.onFilterDeviceTypeChanged(selectedDeviceTypes)
@@ -68,6 +76,47 @@ class DevicesListViewController: UIViewController {
             self?.collectionViewDevicesList.reloadData()
         }
     }
+    
+    private func updateEditMode(_ editMode: Bool) {
+        self.editMode = editMode
+        
+        if editMode {
+            barButtonEdit.title = "Done".localized
+        } else {
+            barButtonEdit.title = "Edit".localized
+        }
+        
+        collectionViewDevicesList.reloadData()
+    }
+}
+
+// MARK: - Actions
+extension DevicesListViewController {
+    
+    @objc private func barButtonTapped(_ sender: UIBarButtonItem) {
+        switch sender {
+        case barButtonEdit:
+            viewModel?.onEditTapped()
+            
+        default:
+            break
+        }
+    }
+    
+    private func deleteDeviceTapped(_ device: Device) {
+        let alertTitle = "Alert.DeleteDevice.Title".localized
+        let alertMessage = String(format: "Alert.DeleteDevice.Message".localized, device.name)
+        
+        let alertCancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        let alertDeleteAction = UIAlertAction(title: "Delete".localized, style: .destructive) { [weak self] _ in
+            self?.viewModel?.onDeleteDeviceTapped(device)
+        }
+        
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alertController.addAction(alertCancelAction)
+        alertController.addAction(alertDeleteAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -80,7 +129,12 @@ extension DevicesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let device = devices[indexPath.row]
         let cell = collectionView.dequeueReusableCell(with: DeviceCollectionViewCell.self, for: indexPath)
-        cell.configure(with: device)
+        cell.configure(with: device, editMode: editMode)
+        cell.onButtonDeleteTappedObservable
+            .subscribe(onNext: { [weak self] in
+                self?.deleteDeviceTapped(device)
+            })
+            .disposed(by: cell.disposeBag)
         return cell
     }
 }
@@ -100,9 +154,17 @@ extension DevicesListViewController {
     override func loadView() {
         super.loadView()
         
+        setupButtonEdit()
         setupDevicesFilterView()
         setupCollectionViewDevicesList()
         setupMainView()
+    }
+    
+    private func setupButtonEdit() {
+        barButtonEdit = UIBarButtonItem(title: nil,
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(barButtonTapped))
     }
     
     private func setupDevicesFilterView() {
@@ -132,6 +194,8 @@ extension DevicesListViewController {
     
     private func setupMainView() {
         view.backgroundColor = UIColor(named: "White")
+        
+        navigationItem.rightBarButtonItem = barButtonEdit
         
         view.addSubview(collectionViewDevicesList)
         view.addSubview(devicesFilterView)
