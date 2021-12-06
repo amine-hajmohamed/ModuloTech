@@ -210,10 +210,10 @@ extension DeviceControlViewController {
         
         switch viewModel?.deviceType {
         case is Light.Type:
-            sliderView.configureWith(value: 0, minValue: 0, maxValue: 100, step: 1)
+            sliderView.configureWith(value: 0, minValue: 0, maxValue: 100, step: 10)
             
         case is RollerShutter.Type:
-            sliderView.configureWith(value: 0, minValue: 0, maxValue: 100, step: 1)
+            sliderView.configureWith(value: 0, minValue: 0, maxValue: 100, step: 10)
             
         case is Heater.Type:
             sliderView.configureWith(value: 7, minValue: 7, maxValue: 28, step: 0.5, labelValueSuffix: "°")
