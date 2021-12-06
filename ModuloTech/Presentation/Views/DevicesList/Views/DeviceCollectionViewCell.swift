@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class DeviceCollectionViewCell: UICollectionViewCell {
     
@@ -14,9 +15,16 @@ class DeviceCollectionViewCell: UICollectionViewCell {
     private var stackViewIconAndName: UIStackView!
     private var imageViewIcon: UIImageView!
     private var labelName: UILabel!
-    
     private var viewValue: UIView!
     private var labelValue: UILabel!
+    private var buttonDelete: UIButton!
+    
+    // MARK: - Properties
+    
+    private let onButtonDeleteTappedSubject = PublishSubject<Void>()
+    var onButtonDeleteTappedObservable: Observable<Void> { onButtonDeleteTappedSubject.asObserver() }
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Initializer
     
@@ -30,9 +38,17 @@ class DeviceCollectionViewCell: UICollectionViewCell {
         loadView()
     }
     
+    // MARK: - Lifecycle
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
+    }
+    
     // MARK: - Configure
     
-    func configure(with device: Device) {
+    func configure(with device: Device, editMode: Bool = false) {
         labelName.text = device.name
         
         switch device {
@@ -50,11 +66,8 @@ class DeviceCollectionViewCell: UICollectionViewCell {
             labelValue.text = nil
         }
         
-        if let text = labelValue.text, !text.isEmpty {
-            viewValue.isHidden = false
-        } else {
-            viewValue.isHidden = true
-        }
+        updateViewValue()
+        updateEditMode(editMode)
     }
     
     private func configure(withLight light: Light) {
@@ -81,6 +94,34 @@ class DeviceCollectionViewCell: UICollectionViewCell {
             labelValue.text = nil
         }
     }
+    
+    // MARK: - Update
+    
+    private func updateViewValue() {
+        if let text = labelValue.text, !text.isEmpty {
+            viewValue.isHidden = false
+        } else {
+            viewValue.isHidden = true
+        }
+    }
+    
+    private func updateEditMode(_ editMode: Bool) {
+        buttonDelete.isHidden = !editMode
+    }
+}
+
+// MARK: - Actions
+extension DeviceCollectionViewCell {
+    
+    @objc private func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case buttonDelete:
+            onButtonDeleteTappedSubject.onNext(Void())
+            
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - View
@@ -90,9 +131,9 @@ private extension DeviceCollectionViewCell {
         setupImageViewIcon()
         setupLabelName()
         setupStackViewIconAndName()
-        
         setupLabelValue()
         setupViewValue()
+        setupButtonDelete()
         
         setupMainView()
     }
@@ -157,6 +198,18 @@ private extension DeviceCollectionViewCell {
         ])
     }
     
+    func setupButtonDelete() {
+        buttonDelete = UIButton()
+        buttonDelete.translatesAutoresizingMaskIntoConstraints = false
+        buttonDelete.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        buttonDelete.setImage(UIImage(named: "DeleteIcon"), for: .normal)
+        
+        NSLayoutConstraint.activate([
+            buttonDelete.widthAnchor.constraint(equalToConstant: 30),
+            buttonDelete.heightAnchor.constraint(equalToConstant: 30),
+        ])
+    }
+    
     func setupMainView() {
         backgroundColor = UIColor(named: "White")
         
@@ -169,6 +222,7 @@ private extension DeviceCollectionViewCell {
         
         addSubview(stackViewIconAndName)
         addSubview(viewValue)
+        addSubview(buttonDelete)
         
         NSLayoutConstraint.activate([
             stackViewIconAndName.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -176,6 +230,8 @@ private extension DeviceCollectionViewCell {
             stackViewIconAndName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             viewValue.bottomAnchor.constraint(equalTo: imageViewIcon.topAnchor, constant: 15),
             viewValue.leadingAnchor.constraint(equalTo: imageViewIcon.trailingAnchor, constant: -15),
+            buttonDelete.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            buttonDelete.topAnchor.constraint(equalTo: topAnchor, constant: 5),
         ])
     }
 }

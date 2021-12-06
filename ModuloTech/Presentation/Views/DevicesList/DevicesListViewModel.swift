@@ -17,6 +17,9 @@ class DevicesListViewModel {
     private let selectedDeviceSubject = PublishSubject<Device>()
     var selectedDeviceObservable: Observable<Device> { selectedDeviceSubject.asObserver() }
     
+    private let editModeSubject = BehaviorSubject<Bool>(value: false)
+    var editModeObservable: Observable<Bool> { editModeSubject.asObserver() }
+    
     private var devicesListNotFiltred: [Device] = []
     
     private let devicesFilter = DevicesFilter()
@@ -67,5 +70,14 @@ class DevicesListViewModel {
     func onFilterDeviceTypeChanged(_ deviceTypes: Set<DeviceType>) {
         devicesFilter.filterDeviceTypes = deviceTypes
         updateDevices()
+    }
+    
+    func onEditTapped() {
+        let currentEditMode = (try? editModeSubject.value()) ?? false
+        editModeSubject.onNext(!currentEditMode)
+    }
+    
+    func onDeleteDeviceTapped(_ device: Device) {
+        deviceUseCase.deleteDevice(device)
     }
 }

@@ -38,7 +38,7 @@ class DeviceUseCase {
             break
         }
         
-        refreshDevicesList()
+        forceRefreshDevicesList()
     }
     
     func updateDevice(_ device: Device, mode: Bool) {
@@ -53,11 +53,19 @@ class DeviceUseCase {
             break
         }
         
-        refreshDevicesList()
+        forceRefreshDevicesList()
     }
     
+    func deleteDevice(_ device: Device) {
+        var devices = (try? memoryCacheProvider.devices.value()) ?? []
+        
+        if let indexOfDevice = devices.firstIndex(where: { $0 === device }) {
+            devices.remove(at: indexOfDevice)
+            memoryCacheProvider.devices.onNext(devices)
+        }
+    }
     
-    private func refreshDevicesList() {
+    private func forceRefreshDevicesList() {
         let devices = (try? memoryCacheProvider.devices.value()) ?? []
         memoryCacheProvider.devices.onNext(devices)
     }

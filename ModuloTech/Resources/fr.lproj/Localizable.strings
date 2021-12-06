@@ -14,5 +14,12 @@
 "Heater" = "Radiateur";
 
 "All" = "Tous";
+"Edit" = "Modifier";
+"Done" = "Terminé";
+"Cancel" = "Annuler";
+"Delete" = "Supprimer";
 
 "DevicesListViewController.Title" = "Mes appareils";
+
+"Alert.DeleteDevice.Title" = "Attention";
+"Alert.DeleteDevice.Message" = "%@ sera supprimé !";
