@@ -15,3 +15,25 @@ class Device {
         self.name = name
     }
 }
+
+extension Device {
+    
+    func getType() -> DeviceType? {
+        switch self {
+        case is Light:
+            return .light
+        case is RollerShutter:
+            return .rollerShutter
+        case is Heater:
+            return .heater
+        default:
+            return nil
+        }
+    }
+}
+
+enum DeviceType {
+    case light
+    case rollerShutter
+    case heater
+}

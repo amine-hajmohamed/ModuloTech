@@ -5,6 +5,7 @@
 //  Created by Mohamed Amine HAJ MOHAMED on 05/12/2021.
 //
 
+import UIKit
 import RxSwift
 
 class DevicesListCoordinator: BaseCoordinator {
@@ -12,7 +13,19 @@ class DevicesListCoordinator: BaseCoordinator {
     private let disposeBag = DisposeBag()
     
     override func start() {
+        configureNavigationControllerDesign()
         goToDevicesList()
+    }
+    
+    private func configureNavigationControllerDesign() {
+        guard let navigationController = router.toPresentable() as? UINavigationController else {
+            return
+        }
+        
+        let navigationBar = navigationController.navigationBar
+        navigationBar.barTintColor = UIColor(named: "White")
+        navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: "Black") ?? .black]
+        navigationBar.shadowImage = UIImage() // To remove the line under the navigation bar
     }
     
     private func goToDevicesList() {

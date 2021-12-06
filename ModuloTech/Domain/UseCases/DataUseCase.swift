@@ -28,7 +28,6 @@ class DataUseCase {
     // MARK: - UseCases
     
     func refreshData() {
-        // TODO: Load in main thread
         dataApiProvider.getData()
             .subscribe(onSuccess: { [weak self] devices in
                 self?.memoryCacheProvider.devices.onNext(devices)

@@ -13,4 +13,6 @@
 "RollerShutter" = "Volet roulant";
 "Heater" = "Radiateur";
 
+"All" = "Tous";
+
 "DevicesListViewController.Title" = "Mes appareils";
