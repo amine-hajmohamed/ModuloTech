@@ -29,15 +29,16 @@ class DevicesListCoordinator: BaseCoordinator {
     }
     
     private func goToDevicesList() {
-        let devicesListViewModel = DevicesListViewModel(dataUseCase: appModule.dataUseCase, deviceUseCase: appModule.deviceUseCase)
-        devicesListViewModel.selectedDeviceObservable
+        let devicesListViewModel = DevicesListViewModel(dataUseCase: appModule.dataUseCase,
+                                                        deviceUseCase: appModule.deviceUseCase)
+        let devicesListViewController = DevicesListViewController()
+        devicesListViewController.viewModel = devicesListViewModel
+        devicesListViewController.onDeviceSelectedObservable?
             .subscribe(onNext: { [weak self] device in
                 self?.goToDeviceControl(device)
             })
             .disposed(by: disposeBag)
         
-        let devicesListViewController = DevicesListViewController()
-        devicesListViewController.viewModel = devicesListViewModel
         router.push(devicesListViewController, animated: false) { [weak self] in
             self?.onCompletion?()
         }

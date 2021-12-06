@@ -24,6 +24,8 @@ class DevicesListViewController: UIViewController {
     
     var viewModel: DevicesListViewModel?
     
+    var onDeviceSelectedObservable: Observable<Device>? { viewModel?.selectedDeviceObservable.asObservable() }
+    
     private var devices: [Device] = []
     private var editMode = false
     private let disposeBag = DisposeBag()
