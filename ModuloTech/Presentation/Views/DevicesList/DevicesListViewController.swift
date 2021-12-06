@@ -141,7 +141,7 @@ extension DevicesListViewController {
             devicesFilterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             devicesFilterView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             collectionViewDevicesList.topAnchor.constraint(equalTo: devicesFilterView.bottomAnchor),
-            collectionViewDevicesList.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
+            collectionViewDevicesList.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionViewDevicesList.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionViewDevicesList.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])

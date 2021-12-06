@@ -168,11 +168,12 @@ extension DefaultRouter: UINavigationControllerDelegate {
         
         runCompletion(for: poppedViewController)
     }
-    
-    func navigationController(_ navigationController: UINavigationController,
-                              animationControllerFor operation: UINavigationController.Operation,
-                              from fromVC: UIViewController,
-                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition
-    }
+  
+    // TODO: Fix when not providing a UIViewControllerAnimatedTransitioning the system swipe back will be disabled
+//    func navigationController(_ navigationController: UINavigationController,
+//                              animationControllerFor operation: UINavigationController.Operation,
+//                              from fromVC: UIViewController,
+//                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition
+//    }
 }

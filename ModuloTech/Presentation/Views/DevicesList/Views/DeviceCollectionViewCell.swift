@@ -142,6 +142,11 @@ private extension DeviceCollectionViewCell {
         viewValue.backgroundColor = UIColor(named: "Gray")
         viewValue.layer.cornerRadius = 10
         
+        viewValue.layer.shadowColor = UIColor(named: "Black")?.cgColor
+        viewValue.layer.shadowOffset = CGSize(width: 1, height: 2)
+        viewValue.layer.shadowOpacity = 0.15
+        viewValue.layer.shadowRadius = 3
+        
         viewValue.addSubview(labelValue)
         
         NSLayoutConstraint.activate([

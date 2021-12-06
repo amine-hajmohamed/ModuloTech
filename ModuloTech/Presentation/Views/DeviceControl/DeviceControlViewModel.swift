@@ -21,7 +21,7 @@ class DeviceControlViewModel {
     var modeObservable: Observable<Bool?> { modeSubject.asObserver() }
     
     private let device: Device
-    var deviceType: Device.Type { type(of: device) }
+    var deviceType: DeviceType? { device.getType() }
     
     // MARK: - UseCases
     

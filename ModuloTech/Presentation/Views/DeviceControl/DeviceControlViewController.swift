@@ -72,12 +72,16 @@ class DeviceControlViewController: UIViewController {
     // MARK: - Update
     
     private func updateTitle() {
-        guard let deviceType = viewModel?.deviceType else {
+        switch viewModel?.deviceType {
+        case .light:
+            title = "Light".localized
+        case .rollerShutter:
+            title = "RollerShutter".localized
+        case .heater:
+            title = "Heater".localized
+        default:
             title = nil
-            return
         }
-        
-        title = "\(deviceType)".localized
     }
     
     private func updateButtonTurnOnOff(withMode mode: Bool?) {
@@ -97,17 +101,17 @@ class DeviceControlViewController: UIViewController {
     
     private func updateImageViewIcon(withMode mode: Bool) {
         switch viewModel?.deviceType {
-        case is Light.Type:
+        case .light:
             if mode {
                 imageViewIcon.image = UIImage(named: "DeviceLightOnIcon")
             } else {
                 imageViewIcon.image = UIImage(named: "DeviceLightOffIcon")
             }
             
-        case is RollerShutter.Type:
+        case .rollerShutter:
             imageViewIcon.image = UIImage(named: "DeviceRollerShutterIcon")
             
-        case is Heater.Type:
+        case .heater:
             if mode {
                 imageViewIcon.image = UIImage(named: "DeviceHeaterOnIcon")
             } else {
@@ -170,7 +174,7 @@ extension DeviceControlViewController {
     }
     
     private func setupViewConfigurations() {
-        if let deviceType = viewModel?.deviceType, deviceType is Heater.Type {
+        if let deviceType = viewModel?.deviceType, deviceType == .heater {
             labelValueSuffix = "°"
             showDecimalNumberIfEqualToZero = true
         }
@@ -209,13 +213,13 @@ extension DeviceControlViewController {
         sliderView.translatesAutoresizingMaskIntoConstraints = false
         
         switch viewModel?.deviceType {
-        case is Light.Type:
+        case .light:
             sliderView.configureWith(value: 0, minValue: 0, maxValue: 100, step: 10)
             
-        case is RollerShutter.Type:
+        case .rollerShutter:
             sliderView.configureWith(value: 0, minValue: 0, maxValue: 100, step: 10)
             
-        case is Heater.Type:
+        case .heater:
             sliderView.configureWith(value: 7, minValue: 7, maxValue: 28, step: 0.5, labelValueSuffix: "°")
             
         default:
